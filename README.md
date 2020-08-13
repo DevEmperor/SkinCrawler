@@ -36,6 +36,7 @@ The usage of SkinCrawler is very easy:
 1. Run the "SkinCrawler_1.0.jar"-file
 2. Enter the name of the Minecraft-player
 3. Wait a moment until you see his/her Skin
+4. Now you can export either the original skin.png-file or the front-skin, which you are currently seeing
 
 
 
