@@ -3,6 +3,8 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -19,6 +21,7 @@ import java.util.Base64;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,6 +30,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		String searchedPlayer = JOptionPane.showInputDialog("Please enter the name of a Minecraft-Player!");
+		
+		File tmpFile = new File(System.getProperty("java.io.tmpdir") + File.separator + searchedPlayer + ".png");
+		File folder = new File(System.getProperty("user.home") + File.separator + "SkinCrawler");
+		File exportedFile = new File(folder.getAbsolutePath() + File.separator + searchedPlayer + ".png");
+		
 		if (searchedPlayer == null || (searchedPlayer != null && ("".equals(searchedPlayer)))) {
 			System.exit(0);
 		} else {
@@ -43,11 +51,11 @@ public class Main {
 							Base64.getDecoder().decode(getValueFromJSON(profileResponse, "value").getBytes())), "url"));
 					
 					InputStream in = skinUrl.openStream();
-					Files.copy(in, new File(System.getProperty("java.io.tmpdir") + File.separator + searchedPlayer).toPath(), 
+					Files.copy(in, tmpFile.toPath(), 
 							StandardCopyOption.REPLACE_EXISTING);
 					
 					BufferedImage finalImage = new BufferedImage(16, 32, BufferedImage.TYPE_INT_ARGB);
-					BufferedImage image = ImageIO.read(new File(System.getProperty("java.io.tmpdir") + File.separator + searchedPlayer));
+					BufferedImage image = ImageIO.read(tmpFile);
 					
 					Graphics2D g2d = finalImage.createGraphics();
 					g2d.drawImage(image.getSubimage(8, 8, 8, 8), 4, 0, null); //head
@@ -72,6 +80,42 @@ public class Main {
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					frame.add(new JLabel(new ImageIcon(finalImage.getScaledInstance(screenWidth / 5, screenHeight / 2, 
 							BufferedImage.SCALE_SMOOTH))), BorderLayout.CENTER);
+					
+					JButton exportOriginal = new JButton("Export original skin-file");
+					exportOriginal.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							try {
+								if(!folder.exists()) {
+									Files.createDirectory(folder.toPath());
+								}
+								Files.copy(tmpFile.toPath(), exportedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+								JOptionPane.showMessageDialog(frame, "Exported original skin-file to " + exportedFile.getAbsolutePath());
+							} catch (IOException f) {
+								JOptionPane.showMessageDialog(frame, "Error while exporting the file: " + f.getMessage());
+							}
+						}
+					});
+					frame.add(exportOriginal, BorderLayout.PAGE_START);
+					
+					JButton exportFront = new JButton("Export front of skin-file");
+					exportFront.addActionListener(new ActionListener() {
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							try {
+								if(!folder.exists()) {
+									Files.createDirectory(folder.toPath());
+								}
+								ImageIO.write(finalImage, "png", exportedFile);
+								JOptionPane.showMessageDialog(frame, "Exported front skin-file to " + exportedFile.getAbsolutePath());
+							} catch(IOException f) {
+								JOptionPane.showMessageDialog(frame, "Error while exporting the file: " + f.getMessage());
+							}
+							
+						}
+					});
+					frame.add(exportFront, BorderLayout.PAGE_END);
+					
 					frame.setBounds(0, 0, screenWidth / 4, (int) (screenHeight / 1.7));
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
