@@ -15,7 +15,7 @@ Quickly grab Minecraft-Skins with their player name
 
 # Installation
 
-**SkinCrawler can be easily installed by [downloading the jar-File in the Release-section.](https://github.com/DevEmperor/SkinCrawler/releases/tag/v1.0)**
+**SkinCrawler can be easily installed by [downloading the jar-File in the Release-section.](https://github.com/DevEmperor/SkinCrawler/releases/tag/v1.1)**
 
 
 
