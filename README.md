@@ -17,6 +17,10 @@ Quickly grab Minecraft-Skins with their player name
 
 **SkinCrawler can be easily installed by [downloading the jar-File in the Release-section.](https://github.com/DevEmperor/SkinCrawler/releases/tag/v1.1)**
 
+If you are on Windows and haven't installed Java (Java Runtime Environment (JRE)), you can do this by simply clicking [on this link](https://javadl.oracle.com/webapps/download/AutoDL?BundleId=242990_a4634525489241b9a9e1aa73d9e118e6).
+
+On Linux, Java is typically pre-installed. If not you can install it very simple from your packet manager. 
+
 
 
 You can also clone this repository by running 
