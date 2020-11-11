@@ -1,3 +1,5 @@
+
+
 <img src="images/window.png" alt="window" style="zoom:75%;display: block;margin-left: auto;margin-right: auto;width: 50%;" />
 
 <img src="images/question.png" alt="question" style="display: block;margin-left: auto;margin-right: auto;width: 50%;" />
