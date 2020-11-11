@@ -31,7 +31,7 @@ You can also clone this repository by running
 git clone https://github.com/DevEmperor/SkinCrawler.git
 ```
 
-and convert it to a jar-file yourself with the "*jar*"-command from your terminal.
+and convert it to a jar-file yourself with the "jar"-command from your terminal.
 
 
 
@@ -53,4 +53,3 @@ The usage of SkinCrawler is very easy:
 # License
 
 SkinCrawler is under the terms of the [Apapche 2.0 license](https://www.apache.org/licenses/LICENSE-2.0), following all clarifications stated in the [license file](https://raw.githubusercontent.com/DevEmperor/SkinCrawler/master/LICENSE).
-
