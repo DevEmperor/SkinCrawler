@@ -29,7 +29,7 @@ You can also clone this repository by running
 git clone https://github.com/DevEmperor/SkinCrawler.git
 ```
 
-and convert it to a jar-file yourself with the "jar"-command from your terminal.
+and convert it to a jar-file yourself with the "*jar*"-command from your terminal.
 
 
 
