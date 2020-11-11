@@ -6,7 +6,7 @@
 
 ![GitHub](https://img.shields.io/github/license/DevEmperor/SkinCrawler?style=for-the-badge)  ![GitHub release (latest by date)](https://img.shields.io/github/v/release/DevEmperor/SkinCrawler?style=for-the-badge)
 
-Quickly grab Minecraft-Skins with their player name
+#### Quickly grab Minecraft-Skins with their player name
 
 - Written with OpenJDK-8
 - Compatible with Windows, Mac-OS and Linux
